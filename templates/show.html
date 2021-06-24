@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>show</title>
+    <a href="/" style="position:absolute;top:10%;right:25%">Previous page</a>
+    <a href="edit" style="position:absolute;top:10%;left:45%">Edit Pizza</a>
+    <a href="delete" style="position:absolute;top:10%;left:55%">delete Pizza</a>
+
+<h1 style="position:absolute;left:40%;top:50%">All pizzas</h1>
+    <table style="width:100%;position:absolute;top:70%">
+    <tr style="color:red">
+        <th style="border:1px solid black; width:10%">ID</th>
+        <th style="border:1px solid black; width:30%">Type</th>
+        <th style="border:1px solid black; width:30%">Size</th>
+        <th style="border:1px solid black; width:30%">Topings</th>
+    </tr>
+    {% for item in pizza %}
+    <tr>
+        <td style="border:1px solid black; width:10%">{{item.id}}</td>
+        <td style="border:1px solid black; width:30%">{{ item.type }}</td>
+        <td style="border:1px solid black; width:30%">{{ item.size}}</td>
+        <td style="border:1px solid black; width:30%">{{ item.topings }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+</head>
+<body >
+<form action="show" method="post">
+    {% csrf_token %}
+        <span style="color:red">Filter</span><br>
+
+        Type<br>
+        <input type="checkbox" name="type" value="Regular">Regular<br>
+        <input type="checkbox" name="type" value="Square">Square<br>
+        Size<br>
+        {% for size in list%}
+        <input type="checkbox" name="size" value={{size}}>{{size}}<br>
+        {% endfor %}
+        <input type="submit">
+</form>
+
+</body>
+</html>

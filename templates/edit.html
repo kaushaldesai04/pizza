@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit</title>
+    <a href="show" style="position:absolute;top:10%;right:10%">Previous page</a>
+</head>
+
+<body>
+    <h3>Edit Existing pizza</h3>
+<form action="edit" method="post">
+{% csrf_token%}
+        <input type="text" name="id" placeholder="Enter ID from below table"><br>
+        <label for="typeselect">select type</label><br>
+            <select name="type" id="typeselect">
+                <option value="">--Please choose an option--</option>
+                <option value="Regular">Regular</option>
+                <option value="Square">Square</option>
+            </select><br>
+        <input type="text" name="size" placeholder="Size"><br>
+    What toppings do you want?<br>
+        <input type="checkbox" name="topings" value="Onion">Onion<br>
+        <input type="checkbox" name="topings" value="Tomato">Tomato<br>
+        <input type="checkbox" name="topings" value="Corn">Corn<br>
+        <input type="checkbox" name="topings" value="Capsicum">Capsicum<br>
+        <input type="checkbox" name="topings" value="Cheese">Cheese<br>
+        <input type="checkbox" name="topings" value="Jalapeno">Jalapeno<br>
+        <input type="submit" placeholder="Make changes">
+</form>
+<h1 style="position:relative;left:40%;top:20%">All pizzas</h1>
+    <table style="width:100%">
+    <tr style="color:red">
+        <th style="border:1px solid black; width:10%">ID</th>
+        <th style="border:1px solid black; width:30%">Type</th>
+        <th style="border:1px solid black; width:30%">Size</th>
+        <th style="border:1px solid black; width:30%">Topings</th>
+    </tr>
+    {% for item in pizza %}
+    <tr>
+        <td style="border:1px solid black; width:10%">{{item.id}}</td>
+        <td style="border:1px solid black; width:30%">{{ item.type }}</td>
+        <td style="border:1px solid black; width:30%">{{ item.size}}</td>
+        <td style="border:1px solid black; width:30%">{{ item.topings }}</td>
+    </tr>
+    {% endfor %}
+
+</body>
+</html>

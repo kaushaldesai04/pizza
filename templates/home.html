@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+
+    <meta charset="UTF-8">
+    <title>home</title>
+
+</head>
+<body>
+<a href="http://localhost:8000/admin" style="position:absolute;top:5%;left:15%"><span style="background-color:yellow">Admin login</span></a><br>
+{% if user.is_authenticated %}
+<li style="position:absolute;top:5%;left:5%">Hello, {{user.first_name}}</li>
+<a href="accounts/logout" style="position:absolute;top:5%;left:25%">Logout</a><br>
+<h1><a href="makepizza">Create Pizza</a></h1>
+<form action="show" method="get">
+    <button type="submit">Show existing pizza</button>
+</form>
+{% else %}
+<a href="accounts/register" style="position:absolute;top:5%;left:15%"><span style="color:white;background-color:red">Register User</span></a><br>
+<a href="accounts/login"><span style="color:white;background-color:Blue;position:absolute;top:5%;left:25%">User login</span></a><br>
+<a href="http://localhost:8000/admin" style="position:absolute;top:5%;left:5%"><span style="background-color:yellow">Admin login</span></a><br>
+<pre>
+    <h1><a href="accounts/login">Create pizza</a></h1>
+</pre>
+<h2><a href="accounts/login">Show existing pizza</a></h2>
+{% endif %}
+
+
+</body>
+
+</html>
