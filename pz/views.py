@@ -3,10 +3,10 @@ from. models import pizza
 from django.contrib import messages
 import pymongo
 
-def home(request):
+def home(request):              #home page
 
     return render(request,'home.html')
-def show(request):
+def show(request):              #show data of existing pizzas before and after filtering
 
     data=pizza.objects.all()
     size=[]
@@ -32,7 +32,8 @@ def show(request):
             data = pizza.objects.filter(size__in=filsize)
             return render(request,'show.html',{"pizza":data,"list":size})
     return render(request,'show.html',{"pizza":data,"list":size})
-def edit(request):
+
+def edit(request):                  #edit existing pizzas from user login
     data1 = pizza.objects.all()
     if request.method=="POST":
         ID=request.POST['id']
@@ -55,7 +56,7 @@ def edit(request):
     else:
         return render(request,'edit.html',{'pizza':data1})
 
-def delete(request):
+def delete(request):        #delete existing pizzas
     data1=pizza.objects.all()
     if request.method=='POST':
         ID = request.POST['id']
@@ -68,7 +69,7 @@ def delete(request):
     else:
         return render(request,'delete.html',{'pizza':data1})
 
-def makepizza(request):
+def makepizza(request):             #Creating new pizzas
    if request.method=="POST":
        type=request.POST['type']
        size=request.POST['size']
