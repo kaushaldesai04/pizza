@@ -1,0 +1,12 @@
+1. python (3.9)
+2. Mongobd compass
+
+Packages-
+
+3. django(3.2)
+4. djongo
+5. django-multiselectfield
+6. pymongo
+
+install packages by typing "pip install (followed by package name in cmd)"
+install all the latest versions of packages and softwares.
